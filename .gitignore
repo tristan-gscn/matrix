@@ -1,0 +1,5 @@
+en.subject.pdf
+.idea
+.venv
+.mypy_cache
+__pycache__
