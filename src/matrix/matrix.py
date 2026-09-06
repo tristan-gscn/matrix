@@ -1,6 +1,5 @@
+import math
 from collections.abc import Iterable
-
-from .vector import Vector
 
 
 class Matrix:
@@ -14,16 +13,6 @@ class Matrix:
         if len(widths) > 1:
             raise ValueError("all rows of a matrix must have the same length")
 
-    @classmethod
-    def from_rows(cls, rows: Iterable[Iterable[float]]) -> "Matrix":
-        return cls(rows)
-
-    @classmethod
-    def identity(cls, n: int) -> "Matrix":
-        return cls(
-            [[1.0 if i == j else 0.0 for j in range(n)] for i in range(n)]
-        )
-
     def copy(self) -> "Matrix":
         return Matrix(self.data)
 
@@ -33,16 +22,16 @@ class Matrix:
         cols = len(self.data[0]) if rows else 0
         return rows, cols
 
-    def is_square(self) -> bool:
-        rows, cols = self.shape()
-        return rows == cols
-
-    def to_vector(self) -> Vector:
-        """Flatten this matrix (row-major) into a vector."""
-        return Vector([x for row in self.data for x in row])
-
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, Matrix) and self.data == other.data
+        return (
+            isinstance(other, Matrix)
+            and self.shape() == other.shape()
+            and all(
+                math.isclose(a, b, abs_tol=1e-9)
+                for row_a, row_b in zip(self.data, other.data)
+                for a, b in zip(row_a, row_b)
+            )
+        )
 
     def __repr__(self) -> str:
         rows = (
