@@ -13,8 +13,12 @@ dependencies = []
 matrix = "matrix:main"
 
 [build-system]
-requires = ["uv_build>=0.10.9,<0.11.0"]
-build-backend = "uv_build"
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+python-source = "src"
+module-name = "matrix._core"
 
 [dependency-groups]
 dev = [

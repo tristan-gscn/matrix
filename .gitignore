@@ -3,3 +3,6 @@ en.subject.pdf
 .venv
 .mypy_cache
 __pycache__
+/target
+*.so
+*.pyd

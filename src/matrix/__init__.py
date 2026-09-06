@@ -1,5 +1,4 @@
-from .matrix import Matrix
-from .vector import Vector
+from matrix._core import Matrix, Vector
 
 __all__ = ["Vector", "Matrix"]
 
