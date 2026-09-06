@@ -1,4 +1,5 @@
 mod core;
+mod ex00;
 
 use pyo3::prelude::*;
 

@@ -1,4 +1,5 @@
 mod core;
+mod ex00;
 
 pub use core::VectorIter;
 
