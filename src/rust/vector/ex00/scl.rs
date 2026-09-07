@@ -5,7 +5,7 @@ use crate::vector::Vector;
 #[pymethods]
 impl Vector {
     /// Scale every coordinate of this vector by `a`, in place.
-    fn scl(&mut self, a: f64) {
+    fn scl(&mut self, _a: f64) {
         todo!()
     }
 }

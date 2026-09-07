@@ -5,7 +5,7 @@ use crate::matrix::Matrix;
 #[pymethods]
 impl Matrix {
     /// Add `v` into this matrix, element-wise, in place.
-    fn add(&mut self, v: &Matrix) -> PyResult<()> {
+    fn add(&mut self, _v: &Matrix) -> PyResult<()> {
         todo!()
     }
 }

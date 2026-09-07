@@ -1,11 +1,14 @@
-.PHONY: all build run lint clean
+.PHONY: all build rust run lint clean
 
 all: build
 
-build:
-	uv sync
+rust:
+	cargo build --manifest-path Cargo.toml
 
-run: build
+build: rust
+	uv sync --reinstall-package matrix
+
+run:
 	uv run matrix
 
 lint: build

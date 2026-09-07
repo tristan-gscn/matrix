@@ -5,7 +5,7 @@ use crate::vector::Vector;
 #[pymethods]
 impl Vector {
     /// Add `v` into this vector, coordinate-wise, in place.
-    fn add(&mut self, v: &Vector) -> PyResult<()> {
+    fn add(&mut self, _v: &Vector) -> PyResult<()> {
         todo!()
     }
 }
