@@ -1,4 +1,4 @@
-.PHONY: all build rust run lint clean
+.PHONY: all build rust run test lint clean
 
 all: build
 
@@ -10,6 +10,9 @@ build: rust
 
 run:
 	uv run matrix
+
+test:
+	uv run pytest
 
 lint: build
 	uv run mypy src/matrix
