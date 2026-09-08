@@ -9,7 +9,7 @@ build: rust
 	uv sync --reinstall-package matrix
 
 run:
-	uv run matrix
+	uv run matrix $(ARGS)
 
 test:
 	uv run pytest

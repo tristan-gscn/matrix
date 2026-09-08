@@ -1,10 +1,52 @@
+"""Matrix package: Linear Algebra in Rust with Python bindings."""
+
+import sys
+from typing import Callable
+
 from matrix._core import Matrix, Vector
 
-__all__ = ["Vector", "Matrix"]
+__all__ = ["Vector", "Matrix", "main"]
+
+
+def _run_ex00() -> None:
+    from matrix.ex00 import main as ex00_main
+    ex00_main()
+
+
+EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
+    "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
+}
+
+
+def _print_help() -> None:
+    print("Usage:")
+    print("  make run ARGS=<exercise>    Run an exercise (e.g. ARGS=00)")
+    print("  make run ARGS=all           Run all available exercises\n")
+    print("Available exercises:")
+    for key, (desc, _) in EXERCISES.items():
+        print(f"  ex{key} : {desc}")
 
 
 def main() -> None:
-    u = Vector([2.0, 3.0])
-    m = Matrix([[1.0, 0.0], [0.0, 1.0]])
-    print(f"Vector: {u}")
-    print(f"Matrix: {m}")
+    """Entrypoint for `matrix` CLI and `make run`."""
+    args = sys.argv[1:]
+
+    if not args or args[0].lower() in ("-h", "--help", "help"):
+        _print_help()
+        return
+
+    target = args[0].lower().removeprefix("ex")
+
+    if target in ("all", "--all"):
+        for _, (_, runner) in EXERCISES.items():
+            runner()
+            print()
+        return
+
+    if target in EXERCISES:
+        _, runner = EXERCISES[target]
+        runner()
+    else:
+        print(f"Unknown exercise: '{args[0]}'\n")
+        _print_help()
+        sys.exit(1)
