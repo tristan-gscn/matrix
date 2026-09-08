@@ -4,8 +4,10 @@ use crate::vector::Vector;
 
 #[pymethods]
 impl Vector {
-    /// Subtract `v` from this vector, coordinate-wise, in place.
-    fn sub(&mut self, _v: &Vector) -> PyResult<()> {
-        todo!()
+    /// Subtract two vectors coordinate-wise and return a new vector.
+    fn __sub__(&self, other: &Vector) -> PyResult<Vector> {
+        self.zip_op(other, "cannot subtract vectors of different lengths", |a, b| {
+            a - b
+        })
     }
 }
