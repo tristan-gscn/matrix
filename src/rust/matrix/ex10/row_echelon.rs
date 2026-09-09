@@ -5,13 +5,14 @@ use crate::matrix::Matrix;
 const EPSILON: f64 = 1e-9;
 
 impl Matrix {
-    pub(crate) fn row_echelon_form(&self, reduce: bool) -> (Matrix, u32) {
+    pub(crate) fn row_echelon_form(&self, reduce: bool) -> (Matrix, u32, usize) {
         let (rows, cols) = self.shape();
         if rows == 0 || cols == 0 {
             return (
                 Matrix {
                     data: self.data.clone(),
                 },
+                0,
                 0,
             );
         }
@@ -77,7 +78,7 @@ impl Matrix {
             })
             .collect();
 
-        (Matrix { data }, swaps)
+        (Matrix { data }, swaps, pivot_row)
     }
 }
 

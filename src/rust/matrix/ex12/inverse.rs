@@ -26,7 +26,7 @@ impl Matrix {
             .map(|(row, id_row)| row.iter().chain(id_row).copied().collect())
             .collect();
 
-        let (reduced, _) = Matrix { data: augmented }.row_echelon_form(true);
+        let (reduced, _, _) = Matrix { data: augmented }.row_echelon_form(true);
 
         Matrix {
             data: reduced.data.iter().map(|row| row[..rows].to_vec()).collect(),

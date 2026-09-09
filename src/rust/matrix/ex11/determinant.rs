@@ -17,7 +17,7 @@ impl Matrix {
             return Ok(1.0);
         }
 
-        let (echelon, swaps) = self.row_echelon_form(false);
+        let (echelon, swaps, _) = self.row_echelon_form(false);
         let diagonal_product: f64 = echelon
             .data
             .iter()
