@@ -1,6 +1,7 @@
 mod core;
 mod ex00;
 pub mod ex07;
+pub mod ex08;
 
 use pyo3::prelude::*;
 
