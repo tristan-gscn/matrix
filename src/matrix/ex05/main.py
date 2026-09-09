@@ -1,5 +1,5 @@
 from matrix._core import Vector
-from matrix.functions.angle_cos import angle_cos
+from matrix.ex05.angle_cos import angle_cos
 
 
 def demo_subject_examples() -> None:

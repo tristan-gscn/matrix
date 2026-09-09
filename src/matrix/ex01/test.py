@@ -1,5 +1,6 @@
 import pytest
-from matrix import Vector, linear_combination
+from matrix import Vector
+from matrix.ex01.linear_combination import linear_combination
 
 
 class TestLinearCombination:

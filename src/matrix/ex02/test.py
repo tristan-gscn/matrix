@@ -1,5 +1,6 @@
 import pytest
-from matrix import Matrix, Vector, lerp
+from matrix import Matrix, Vector
+from matrix.ex02.lerp import lerp
 
 
 class TestLerp:

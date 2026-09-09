@@ -1,5 +1,6 @@
 import pytest
-from matrix import Vector, angle_cos
+from matrix import Vector
+from matrix.ex05.angle_cos import angle_cos
 
 
 class TestAngleCos:

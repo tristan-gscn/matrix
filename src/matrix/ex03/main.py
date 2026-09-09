@@ -14,7 +14,7 @@ def demo_subject_examples() -> None:
     print(f"u2.dot(v2) = {u2.dot(v2)}")
 
     u3 = Vector([-1.0, 6.0])
-    v3 = Vector([6.0, 1.0])
+    v3 = Vector([3.0, 2.0])
     print(f"\nu3 ={u3}\nv3 ={v3}")
     print(f"u3.dot(v3) = {u3.dot(v3)}")
 

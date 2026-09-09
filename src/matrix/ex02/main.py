@@ -1,5 +1,5 @@
 from matrix._core import Matrix, Vector
-from matrix.functions.lerp import lerp
+from matrix.ex02.lerp import lerp
 
 
 def demo_scalars() -> None:

@@ -4,9 +4,9 @@ import sys
 from typing import Callable
 
 from matrix._core import Matrix, Vector
-from matrix.functions.angle_cos import angle_cos
-from matrix.functions.lerp import lerp
-from matrix.functions.linear_combination import linear_combination
+from matrix.ex01.linear_combination import linear_combination
+from matrix.ex02.lerp import lerp
+from matrix.ex05.angle_cos import angle_cos
 
 __all__ = [
     "Vector",
@@ -19,32 +19,32 @@ __all__ = [
 
 
 def _run_ex00() -> None:
-    from matrix.mains.ex00 import main as ex00_main
+    from matrix.ex00.main import main as ex00_main
     ex00_main()
 
 
 def _run_ex01() -> None:
-    from matrix.mains.ex01 import main as ex01_main
+    from matrix.ex01.main import main as ex01_main
     ex01_main()
 
 
 def _run_ex02() -> None:
-    from matrix.mains.ex02 import main as ex02_main
+    from matrix.ex02.main import main as ex02_main
     ex02_main()
 
 
 def _run_ex03() -> None:
-    from matrix.mains.ex03 import main as ex03_main
+    from matrix.ex03.main import main as ex03_main
     ex03_main()
 
 
 def _run_ex04() -> None:
-    from matrix.mains.ex04 import main as ex04_main
+    from matrix.ex04.main import main as ex04_main
     ex04_main()
 
 
 def _run_ex05() -> None:
-    from matrix.mains.ex05 import main as ex05_main
+    from matrix.ex05.main import main as ex05_main
     ex05_main()
 
 

@@ -1,7 +1,7 @@
 """Exercise 01 - Linear combination."""
 
 from matrix._core import Vector
-from matrix.functions.linear_combination import linear_combination
+from matrix.ex01.linear_combination import linear_combination
 
 
 def demo_subject_examples() -> None:
