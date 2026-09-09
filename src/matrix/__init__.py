@@ -4,10 +4,18 @@ import sys
 from typing import Callable
 
 from matrix._core import Matrix, Vector
+from matrix.functions.angle_cos import angle_cos
 from matrix.functions.lerp import lerp
 from matrix.functions.linear_combination import linear_combination
 
-__all__ = ["Vector", "Matrix", "linear_combination", "lerp", "main"]
+__all__ = [
+    "Vector",
+    "Matrix",
+    "linear_combination",
+    "lerp",
+    "angle_cos",
+    "main",
+]
 
 
 def _run_ex00() -> None:
@@ -35,12 +43,18 @@ def _run_ex04() -> None:
     ex04_main()
 
 
+def _run_ex05() -> None:
+    from matrix.mains.ex05 import main as ex05_main
+    ex05_main()
+
+
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
     "01": ("Exercise 01 - Linear Combination", _run_ex01),
     "02": ("Exercise 02 - Linear Interpolation", _run_ex02),
     "03": ("Exercise 03 - Dot Product", _run_ex03),
     "04": ("Exercise 04 - Norm", _run_ex04),
+    "05": ("Exercise 05 - Cosine", _run_ex05),
 }
 
 
