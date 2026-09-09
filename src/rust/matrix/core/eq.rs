@@ -4,7 +4,7 @@ use crate::matrix::Matrix;
 
 #[pymethods]
 impl Matrix {
-    fn __eq__(&self, other: &Matrix) -> bool {
+    pub(crate) fn __eq__(&self, other: &Matrix) -> bool {
         self.shape() == other.shape()
             && self
                 .data

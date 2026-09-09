@@ -4,6 +4,7 @@
 
 mod copy;
 mod eq;
+mod identity;
 mod new;
 mod repr;
 mod shape;
