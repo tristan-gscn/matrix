@@ -14,7 +14,7 @@ run:
 test:
 	uv run pytest
 
-lint: build
+lint:
 	uv run mypy src/matrix
 	uv run flake8 src/matrix
 

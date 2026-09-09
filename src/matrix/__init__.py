@@ -4,9 +4,10 @@ import sys
 from typing import Callable
 
 from matrix._core import Matrix, Vector
+from matrix.functions.lerp import lerp
 from matrix.functions.linear_combination import linear_combination
 
-__all__ = ["Vector", "Matrix", "linear_combination", "main"]
+__all__ = ["Vector", "Matrix", "linear_combination", "lerp", "main"]
 
 
 def _run_ex00() -> None:
@@ -19,9 +20,15 @@ def _run_ex01() -> None:
     ex01_main()
 
 
+def _run_ex02() -> None:
+    from matrix.mains.ex02 import main as ex02_main
+    ex02_main()
+
+
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
     "01": ("Exercise 01 - Linear Combination", _run_ex01),
+    "02": ("Exercise 02 - Linear Interpolation", _run_ex02),
 }
 
 
