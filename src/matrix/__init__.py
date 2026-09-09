@@ -7,6 +7,7 @@ from matrix._core import Matrix, Vector
 from matrix.ex01.linear_combination import linear_combination
 from matrix.ex02.lerp import lerp
 from matrix.ex05.angle_cos import angle_cos
+from matrix.ex06.cross_product import cross_product
 
 __all__ = [
     "Vector",
@@ -14,6 +15,7 @@ __all__ = [
     "linear_combination",
     "lerp",
     "angle_cos",
+    "cross_product",
     "main",
 ]
 
@@ -48,6 +50,11 @@ def _run_ex05() -> None:
     ex05_main()
 
 
+def _run_ex06() -> None:
+    from matrix.ex06.main import main as ex06_main
+    ex06_main()
+
+
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
     "01": ("Exercise 01 - Linear Combination", _run_ex01),
@@ -55,6 +62,7 @@ EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "03": ("Exercise 03 - Dot Product", _run_ex03),
     "04": ("Exercise 04 - Norm", _run_ex04),
     "05": ("Exercise 05 - Cosine", _run_ex05),
+    "06": ("Exercise 06 - Cross Product", _run_ex06),
 }
 
 
