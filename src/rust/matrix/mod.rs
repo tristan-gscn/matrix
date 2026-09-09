@@ -4,6 +4,7 @@ pub mod ex07;
 pub mod ex08;
 pub mod ex09;
 pub mod ex10;
+pub mod ex11;
 
 use pyo3::prelude::*;
 

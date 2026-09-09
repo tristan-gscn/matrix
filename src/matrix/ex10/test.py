@@ -72,3 +72,14 @@ class TestMatrixRowEchelon:
         u = Matrix([[1.0, 2.0], [3.0, 4.0]])
         _ = u.row_echelon()
         assert u == Matrix([[1.0, 2.0], [3.0, 4.0]])
+
+    def test_reduce_false_gives_plain_echelon_form(self) -> None:
+        # Without reduction: pivots keep their natural value (not
+        # normalized to 1) and rows above a pivot are left untouched.
+        u = Matrix([[2.0, 4.0], [3.0, 1.0]])
+        expected = Matrix([[3.0, 1.0], [0.0, 10.0 / 3.0]])
+        assert u.row_echelon(reduce=False) == expected
+
+    def test_reduce_true_is_the_default(self) -> None:
+        u = Matrix([[1.0, 2.0], [3.0, 4.0]])
+        assert u.row_echelon() == u.row_echelon(reduce=True)

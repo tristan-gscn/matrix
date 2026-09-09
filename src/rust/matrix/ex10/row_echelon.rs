@@ -4,17 +4,20 @@ use crate::matrix::Matrix;
 
 const EPSILON: f64 = 1e-9;
 
-#[pymethods]
 impl Matrix {
-    pub fn row_echelon(&self) -> Matrix {
+    pub(crate) fn row_echelon_form(&self, reduce: bool) -> (Matrix, u32) {
         let (rows, cols) = self.shape();
         if rows == 0 || cols == 0 {
-            return Matrix {
-                data: self.data.clone(),
-            };
+            return (
+                Matrix {
+                    data: self.data.clone(),
+                },
+                0,
+            );
         }
 
         let mut data = self.data.clone();
+        let mut swaps = 0;
         let mut pivot_row = 0;
 
         for col in 0..cols {
@@ -32,9 +35,17 @@ impl Matrix {
                 continue;
             }
 
-            data.swap(pivot_row, best_row);
+            if best_row != pivot_row {
+                data.swap(pivot_row, best_row);
+                swaps += 1;
+            }
+
             let pivot_val = data[pivot_row][col];
-            let pivot_line: Vec<f64> = data[pivot_row].iter().map(|&x| x / pivot_val).collect();
+            let pivot_line: Vec<f64> = if reduce {
+                data[pivot_row].iter().map(|&x| x / pivot_val).collect()
+            } else {
+                data[pivot_row].clone()
+            };
 
             data = data
                 .into_iter()
@@ -42,8 +53,10 @@ impl Matrix {
                 .map(|(r, row)| {
                     if r == pivot_row {
                         pivot_line.clone()
+                    } else if !reduce && r < pivot_row {
+                        row
                     } else {
-                        let factor = row[col];
+                        let factor = if reduce { row[col] } else { row[col] / pivot_val };
                         row.iter()
                             .zip(&pivot_line)
                             .map(|(&x, &p)| x - factor * p)
@@ -55,7 +68,6 @@ impl Matrix {
             pivot_row += 1;
         }
 
-        // 4. Nettoyer les résidus flottants et -0.0
         let data = data
             .into_iter()
             .map(|row| {
@@ -65,6 +77,14 @@ impl Matrix {
             })
             .collect();
 
-        Matrix { data }
+        (Matrix { data }, swaps)
+    }
+}
+
+#[pymethods]
+impl Matrix {
+    #[pyo3(signature = (reduce = true))]
+    pub fn row_echelon(&self, reduce: bool) -> Matrix {
+        self.row_echelon_form(reduce).0
     }
 }
