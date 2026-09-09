@@ -347,4 +347,4 @@ class TestMatrixMul:
         with pytest.raises(TypeError):
             _ = m * [1.0, 2.0]  # type: ignore[operator]
         with pytest.raises(TypeError):
-            _ = m * m  # type: ignore[operator]
+            _ = m * {"invalid": 1}  # type: ignore[operator]
