@@ -6,6 +6,7 @@ rust:
 	cargo build --manifest-path Cargo.toml
 
 build: rust
+	cp target/debug/lib_core.dylib src/matrix/_core.cpython-312-darwin.so
 	uv sync --reinstall-package matrix
 
 run:

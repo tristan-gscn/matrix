@@ -1,6 +1,7 @@
 mod core;
 mod ex00;
 mod ex03;
+mod ex04;
 
 pub use core::VectorIter;
 
