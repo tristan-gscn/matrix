@@ -4,17 +4,24 @@ import sys
 from typing import Callable
 
 from matrix._core import Matrix, Vector
+from matrix.functions.linear_combination import linear_combination
 
-__all__ = ["Vector", "Matrix", "main"]
+__all__ = ["Vector", "Matrix", "linear_combination", "main"]
 
 
 def _run_ex00() -> None:
-    from matrix.ex00 import main as ex00_main
+    from matrix.mains.ex00 import main as ex00_main
     ex00_main()
+
+
+def _run_ex01() -> None:
+    from matrix.mains.ex01 import main as ex01_main
+    ex01_main()
 
 
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
+    "01": ("Exercise 01 - Linear Combination", _run_ex01),
 }
 
 
