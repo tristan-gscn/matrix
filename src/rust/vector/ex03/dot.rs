@@ -5,19 +5,19 @@ use crate::vector::Vector;
 
 #[pymethods]
 impl Vector {
-    fn __add__(&self, other: &Vector) -> PyResult<Vector> {
+    fn dot(&self, other: &Vector) -> PyResult<f64> {
         (self.data.len() == other.data.len())
             .then(|| {
-                let data = self
-                    .data
+                self.data
                     .iter()
                     .zip(&other.data)
-                    .map(|(&a, &b)| a + b)
-                    .collect();
-                Vector { data }
+                    .map(|(&a, &b)| a * b)
+                    .sum()
             })
             .ok_or_else(|| {
-                PyValueError::new_err("cannot add vectors of different lengths")
+                PyValueError::new_err(
+                    "cannot compute dot product of vectors of different lengths",
+                )
             })
     }
 }

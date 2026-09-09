@@ -25,10 +25,16 @@ def _run_ex02() -> None:
     ex02_main()
 
 
+def _run_ex03() -> None:
+    from matrix.mains.ex03 import main as ex03_main
+    ex03_main()
+
+
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
     "01": ("Exercise 01 - Linear Combination", _run_ex01),
     "02": ("Exercise 02 - Linear Interpolation", _run_ex02),
+    "03": ("Exercise 03 - Dot Product", _run_ex03),
 }
 
 
