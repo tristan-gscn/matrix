@@ -70,6 +70,11 @@ def _run_ex09() -> None:
     ex09_main()
 
 
+def _run_ex10() -> None:
+    from matrix.ex10.main import main as ex10_main
+    ex10_main()
+
+
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
     "01": ("Exercise 01 - Linear Combination", _run_ex01),
@@ -81,6 +86,7 @@ EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "07": ("Exercise 07 - Linear map, Matrix multiplication", _run_ex07),
     "08": ("Exercise 08 - Trace", _run_ex08),
     "09": ("Exercise 09 - Transpose", _run_ex09),
+    "10": ("Exercise 10 - Row-Echelon Form", _run_ex10),
 }
 
 
