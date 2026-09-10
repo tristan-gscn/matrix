@@ -1,4 +1,4 @@
-.PHONY: all build rust run test lint clean
+.PHONY: all build rust run test lint clean display
 
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
@@ -19,6 +19,10 @@ build: rust
 
 run:
 	uv run matrix $(ARGS)
+
+display:
+	uv run python src/matrix/ex14/projection.py $(if $(ARGS),$(ARGS),90 1.7777 0.5 100) > src/matrix/ex14/display/proj
+	cd src/matrix/ex14/display && ./display
 
 test:
 	uv run pytest

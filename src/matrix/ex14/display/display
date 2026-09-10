@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+OS="$(uname -s)"
+
+case "$OS" in
+    Darwin)
+        EXEC="$DIR/display_macos"
+        ;;
+    Linux)
+        EXEC="$DIR/display_linux"
+        ;;
+    *)
+        echo "Error: Unsupported operating system: $OS" >&2
+        exit 1
+        ;;
+esac
+
+if [ ! -f "$EXEC" ]; then
+    echo "Error: Display executable not found at $EXEC" >&2
+    exit 1
+fi
+
+chmod +x "$EXEC"
+exec "$EXEC" "$@"

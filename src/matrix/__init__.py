@@ -8,6 +8,7 @@ from matrix.ex01.linear_combination import linear_combination
 from matrix.ex02.lerp import lerp
 from matrix.ex05.angle_cos import angle_cos
 from matrix.ex06.cross_product import cross_product
+from matrix.ex14.projection import projection
 
 __all__ = [
     "Vector",
@@ -16,6 +17,7 @@ __all__ = [
     "lerp",
     "angle_cos",
     "cross_product",
+    "projection",
     "main",
 ]
 
@@ -90,6 +92,11 @@ def _run_ex13() -> None:
     ex13_main()
 
 
+def _run_ex14() -> None:
+    from matrix.ex14.main import main as ex14_main
+    ex14_main()
+
+
 EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "00": ("Exercise 00 - Add, Subtract and Scale", _run_ex00),
     "01": ("Exercise 01 - Linear Combination", _run_ex01),
@@ -105,6 +112,7 @@ EXERCISES: dict[str, tuple[str, Callable[[], None]]] = {
     "11": ("Exercise 11 - Determinant", _run_ex11),
     "12": ("Exercise 12 - Inverse", _run_ex12),
     "13": ("Exercise 13 - Rank", _run_ex13),
+    "14": ("Exercise 14 - Bonus: Projection matrix", _run_ex14),
 }
 
 
